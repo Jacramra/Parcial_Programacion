@@ -18,6 +18,9 @@ boton_registrar.grid(row=4, column=0)
 boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=registrar_produccion)
 boton_reporteGeneral.grid(row=5, column=0)
 
+boton_reporteIndividual = tk.Button(ventana, text="Reporte Individual", command=registrar_produccion)
+boton_reporteIndividual.grid(row=6, column=0)
+
 
 
 
