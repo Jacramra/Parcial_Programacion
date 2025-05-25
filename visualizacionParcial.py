@@ -12,16 +12,22 @@ def registrar_produccion():
     messagebox.showinfo("Registrado", f"{nombre} registrado con eficiencia {eficiencia} ({estado})")
 
 # Menú
-#tk.Button(root, text="Registrar producción", command=registrar_produccion).grid(row=4, column=0, columnspan=2, pady=5)
 boton_registrar = tk.Button(ventana, text="Registrar producción", command=registrar_produccion)
-boton_registrar.grid(row=4, column=0, columnspan=2, pady=5)
+boton_registrar.grid(row=4, column=0)
+
+boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=registrar_produccion)
+boton_reporteGeneral.grid(row=5, column=0)
+
+
+
+
 
 #Campo: Nombre operario
-label_nombreOperario = tk.Label(ventana, text="Nombre del operario")
-label_nombreOperario.grid(row=0, column=0)
+#label_nombreOperario = tk.Label(ventana, text="Nombre del operario")
+#label_nombreOperario.grid(row=0, column=0)
 
-label_nombreOperario = tk.Entry(ventana)
-label_nombreOperario.grid(row=0, column=1)
+#label_nombreOperario = tk.Entry(ventana)
+#label_nombreOperario.grid(row=0, column=1)
 
 
 
