@@ -1,2 +1,2 @@
-# Parcial_Progrmaci-n
+# Parcial_Progrmacion
 Parcial final de Programación I
