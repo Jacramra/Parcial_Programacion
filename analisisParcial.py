@@ -1,29 +1,21 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import random
-import tkinter as tk
 from tkinter import messagebox
 
-
-# ________________________________________________
-# ***Funciones Tarea: proyectos de construcción***
-# ________________________________________________
+# Lista para almacenar los datos de producción
+produccion = []  # Aquí se guardan los datos registrados
+datos_operarios = {}  # Diccionario con detalles de cada operario
+#_________________________________________________________________________________________
+# _______________________________________FUNCIONES________________________________________
+#_________________________________________________________________________________________
 
 # 1. Registro de producción diaria
 def registrar_produccion(nombre, pf, pq, cr):
-    #nombre = entry_nombreOperario.get().strip()         # Obtiene el texto ingresado y quitar espacios extra
-        
+      
     if not nombre.strip():
         raise ValueError("Por favor, ingrese el nombre del operario.")
-        #return
-        #messagebox.showinfo("Registrado", f"Nombre: {nombre}.")
-        #messagebox.showinfo("Registrado", f"{nombre} registrado con eficiencia {eficiencia} ({estado})")
-    
-    #label_nombre.grid_remove()              # Oculta la etiqueta
-    #entry_nombreOperario.grid_remove()      # Oculta el campo de texto
-    #boton_confirmar.grid_remove()           # Oculta el botón confirmar
-    #entry_nombreOperario.delete(0, tk.END)  # Limpia el campo
-
+   
     try:
         pf = int(pf)
         pq = int(pq)
@@ -33,9 +25,20 @@ def registrar_produccion(nombre, pf, pq, cr):
     except ValueError:
         raise ValueError("Debe ingresar cantidades válidas entre 0 y 500.")
 
-    eficiencia = random.randint(70, 100)
-    estado = "Óptimo" if eficiencia >= 90 else "Regular" if eficiencia >= 80 else "Bajo"
+    # Genera complejidades aleatorias para cada producto
+    complejidades = {
+        "Pan Francés": round(random.uniform(1.0, 1.5), 2),
+        "Pan de Queso": round(random.uniform(1.0, 1.5), 2),
+        "Croissants": round(random.uniform(1.0, 1.5), 2),
+    }
 
+    # Calcula eficiencia ponderada
+    total = pf * complejidades["Pan Francés"] + pq * complejidades["Pan de Queso"] + cr * complejidades["Croissants"]
+    suma_complejidad = sum(complejidades.values())
+    eficiencia = round(total / suma_complejidad)
+    estado = "Cumple" if eficiencia >= 300 else "No cumple"
+
+    # Crear registro para guardar
     registro = {
         "Operario": nombre,
         "Pan Francés": pf,
@@ -45,7 +48,22 @@ def registrar_produccion(nombre, pf, pq, cr):
         "Estado": estado
     }
 
-    produccion.append(registro)
+    # Guardar el registro en las listas
+    produccion.append(registro) 
+
+    # También se guarda individualmente
+    datos_operarios[nombre] = {
+        "cantidades": {
+            "Pan Francés": pf,
+            "Pan de Queso": pq,
+            "Croissants": cr
+        },
+        "complejidades": complejidades,
+        "eficiencia": eficiencia,
+        "estado": estado
+    }
+
     return registro
 
+    
 

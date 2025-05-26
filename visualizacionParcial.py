@@ -14,7 +14,8 @@ tabla.grid(row=7, column=0, columnspan=2)
 # _______________________________________CAMPOS___________________________________________
 #_________________________________________________________________________________________
 
-def mostrar_campos(): # Crear el label y entry solo cuando se pulse el botón
+# Mostrar campos para ingresar datos
+def mostrar_campos():
     global entry_nombre, entry_pf, entry_pq, entry_cr
     global label_nombreOperario, boton_confirmar
 
@@ -42,15 +43,23 @@ def mostrar_campos(): # Crear el label y entry solo cuando se pulse el botón
     entry_cr = tk.Entry(ventana)
     entry_cr.grid(row=4, column=1)                      # Mostrar campo de texto
 
-    # Botón: Confirmar registro de información
-    #boton_confirmar.grid(row=5, column=0, columnspan=2) 
+    # Mostrar el botón Confirmar cuando se llame a esta función
+    boton_confirmar.grid()  # Esto lo muestra nuevamente en la ventana
 
-    # Tabla para mostrar resultados
-    tabla = tk.Text(ventana, width=70, height=10)
-    tabla.grid(row=6, column=0, columnspan=2)
 
-# Función para confirmar el registro
+# Confirmar y registrar datos ingresados
 def confirmar():
+    global entry_nombre, entry_pf, entry_pq, entry_cr
+    global label_nombreOperario, label_panFrances, label_panQueso, label_panCroissants
+
+    # Ocultar los campos y etiquetas solicitados
+    #label_nombreOperario.grid_remove()
+    #entry_nombre.grid_remove()
+    #label_panFrances.grid_remove()
+    #entry_pf.grid_remove()
+    #label_panQueso.grid_remove()
+    #entry_pq.grid_remove()
+
     nombre = entry_nombre.get()
     pf = entry_pf.get()
     pq = entry_pq.get()
@@ -58,6 +67,8 @@ def confirmar():
 
     try:
         registro = registrar_produccion(nombre, pf, pq, cr)
+        if registro is None:
+            raise ValueError("El registro está vacío.")
         mensaje = f"{registro['Operario']} - {registro['Eficiencia']}% ({registro['Estado']})"
         messagebox.showinfo("Registrado", mensaje)
         mostrar_en_tabla(registro)
@@ -65,7 +76,7 @@ def confirmar():
     except ValueError as e:
         messagebox.showerror("Error", str(e))
 
-# Mostrar en la tabla
+# Mostrar los resultados en la tabla de texto
 def mostrar_en_tabla(registro):
     tabla.insert(tk.END, f"{registro['Operario']} | PF: {registro['Pan Francés']} | PQ: {registro['Pan de Queso']} | CR: {registro['Croissants']} | Eficiencia: {registro['Eficiencia']}% | Estado: {registro['Estado']}\n")
 
@@ -76,7 +87,7 @@ def limpiar_campos():
     entry_pq.delete(0, tk.END)
     entry_cr.delete(0, tk.END)
 
- # 4. Cierra la ventana
+ # Cerrar la ventana
 # Referencia: 
  # GeeksforGeeks. (2022). Destroy method in Tkinter Python. Disponible en: https://www.geeksforgeeks.org/destroy-method-in-tkinter-python/
 def cerrar_ventana():
@@ -87,22 +98,25 @@ def cerrar_ventana():
 # _______________________________________MENÚ_____________________________________________
 #_________________________________________________________________________________________
 
-# Botón inicial para mostrar el campo de nombre
+# Botón para registrar producción
 boton_registrar = tk.Button(ventana, text="Registrar producción", command=mostrar_campos)
-boton_registrar.grid(row=4, column=0)
+boton_registrar.grid(row=0, column=0)
 
-# Botón para confirmar el registro (inicialmente oculto)
+# Botón para confirmar el registro
 boton_confirmar = tk.Button(ventana, text="Confirmar registro", command=confirmar)
-boton_confirmar.grid(row=5, column=0, columnspan=2)
+boton_confirmar.grid(row=0, column=1, columnspan=2)
+boton_confirmar.grid_remove()  # Oculta el botón inicialmente
 
-
+# Botón para Reporte General
 boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=mostrar_campos)
 boton_reporteGeneral.grid(row=5, column=0)
 
+# Botón para Reporte Individual
 boton_reporteIndividual = tk.Button(ventana, text="Reporte Individual", command=mostrar_campos)
 boton_reporteIndividual.grid(row=6, column=0)
 
+# Botón para salir
 boton_Salir = tk.Button(ventana, text="Salir", command=cerrar_ventana) 
-boton_Salir.grid(row=7, column=0)
+boton_Salir.grid(row=8, column=0)
 
 ventana.mainloop()
