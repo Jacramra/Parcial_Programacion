@@ -125,7 +125,7 @@ def mostrar_reporte_individual():
 
     boton = tk.Button(ventana_individual, text="Generar reporte", command=confirmar_nombre)
     boton.pack()
-    
+
  # Cerrar la ventana
 # Referencia: 
  # GeeksforGeeks. (2022). Destroy method in Tkinter Python. Disponible en: https://www.geeksforgeeks.org/destroy-method-in-tkinter-python/
@@ -151,7 +151,7 @@ boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=mostra
 boton_reporteGeneral.grid(row=5, column=0)
 
 # Botón para Reporte Individual
-boton_reporteIndividual = tk.Button(ventana, text="Reporte Individual", command=mostrar_campos)
+boton_reporteIndividual = tk.Button(ventana, text="Reporte Individual", command=mostrar_reporte_individual)
 boton_reporteIndividual.grid(row=6, column=0)
 
 # Botón para salir
