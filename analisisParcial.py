@@ -91,4 +91,6 @@ def obtener_reporte_general():
 
     return df[["Operario", "Eficiencia", "Estado"]], estadisticas, promedio
     
-
+def obtener_reporte_individual(nombre):
+    if nombre not in datos_operarios:
+        raise ValueError("Operario no encontrado.")
