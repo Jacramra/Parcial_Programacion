@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
 from analisisParcial import registrar_produccion
+from analisisParcial import obtener_reporte_general, obtener_reporte_individual
+
 
 # Crear ventana principal
 ventana = tk.Tk()
