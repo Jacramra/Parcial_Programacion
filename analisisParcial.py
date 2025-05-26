@@ -68,5 +68,17 @@ def registrar_produccion(nombre, pf, pq, cr):
 def obtener_reporte_general():
     if not produccion:
         raise ValueError("No hay registros disponibles.")
+
+    df = pd.DataFrame(produccion)
+    estadisticas = df.describe()
+    promedio = df["Eficiencia"].mean()
+
+    # Gráfico de torta
+    conteo_estados = df["Estado"].value_counts()
+    conteo_estados.plot.pie(autopct='%1.1f%%', startangle=90)
+    plt.title("Cumplimiento de Meta")
+    plt.ylabel("")
+    plt.show()
+
     
 
