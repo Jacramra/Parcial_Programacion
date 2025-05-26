@@ -6,6 +6,10 @@ from analisisParcial import registrar_produccion
 ventana = tk.Tk()
 ventana.title("Control de la Producción en Panadería")
 
+# Tabla de resultados global para poder insertar luego
+tabla = tk.Text(ventana, width=70, height=10)
+tabla.grid(row=7, column=0, columnspan=2)
+
 #_________________________________________________________________________________________
 # _______________________________________CAMPOS___________________________________________
 #_________________________________________________________________________________________
