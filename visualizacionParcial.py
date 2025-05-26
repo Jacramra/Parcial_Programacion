@@ -7,13 +7,31 @@ from tkinter import messagebox
 ventana = tk.Tk()
 ventana.title("Control de la Producción en Panadería")
 
-def mostrar_campo_nombre():
-    # Crear el label y entry solo cuando se pulse el botón
-    label_nombre.grid(row=1, column=0)                  # Mostrar etiqueta "Nombre del operario"
-    entry_nombreOperario.grid(row=1, column=1)          # Mostrar campo de texto para ingresar nombre
+#_________________________________________________________________________________________
+# _______________________________________CAMPOS___________________________________________
+#_________________________________________________________________________________________
 
-    label_panFrances.grid(row=2, column=0)              # Mostrar etiqueta "Pan Francés"
-    entry_pf.grid(row=2, column=1)                      # Mostrar campo de texto para ingresar nombre
+def mostrar_campos(): # Crear el label y entry solo cuando se pulse el botón
+    
+    # Campo Nombre Operario
+    label_nombre = tk.Label(ventana, text="Nombre del operario")
+    label_nombre.grid(row=1, column=0)                  # Mostrar etiqueta 
+    entry_nombreOperario = tk.Entry(ventana)
+    entry_nombreOperario.grid(row=1, column=1)          # Mostrar campo de texto
+
+    # Campo Cant. Pan Francés
+    label_panFrances = tk.Label(ventana, text="Cant. pan francés")
+    label_panFrances.grid(row=2, column=0)              # Mostrar etiqueta 
+    entry_pf = tk.Entry(ventana)
+    entry_pf.grid(row=2, column=1)                      # Mostrar campo de texto
+
+    # Campo Cant. Pan Queso
+    label_panQueso = tk.Label(ventana, text="Cant. pan de queso")
+    label_panQueso.grid(row=3, column=0)                # Mostrar etiqueta 
+    entry_pq = tk.Entry(ventana)
+    entry_pq.grid(row=3, column=1)                      # Mostrar campo de texto
+
+
 
     boton_confirmar.grid(row=5, column=0, columnspan=2) # Mostrar botón "Confirmar registro"
 
@@ -46,7 +64,7 @@ def cerrar_ventana():
 #_________________________________________________________________________________________
 
 # Botón inicial para mostrar el campo de nombre
-boton_registrar = tk.Button(ventana, text="Registrar producción", command=mostrar_campo_nombre)
+boton_registrar = tk.Button(ventana, text="Registrar producción", command=mostrar_campos)
 boton_registrar.grid(row=4, column=0)
 
 # Botón para confirmar el registro (inicialmente oculto)
@@ -61,24 +79,6 @@ boton_reporteIndividual.grid(row=6, column=0)
 boton_Salir = tk.Button(ventana, text="Salir", command=cerrar_ventana) 
 boton_Salir.grid(row=7, column=0)
 
-#_________________________________________________________________________________________
-# _______________________________________CAMPOS_____________________________________________
-#_________________________________________________________________________________________
-
-#Campo: Nombre operario
-# Label y entry para nombre Operario (inicialmente ocultos)
-label_nombre = tk.Label(ventana, text="Nombre del operario")
-#label_nombre.grid(row=0, column=0)
-
-entry_nombreOperario = tk.Entry(ventana)
-#entry_nombreOperario.grid(row=0, column=1)
-
-# Label y entry para nombre
-label_panFrances = tk.Label(ventana, text="Cant. pan francés")
-#label_panFrances.grid(row=1, column=0)
-
-entry_pf = tk.Entry(ventana)
-#entry_pf.grid(row=1, column=1)
 
 
 
