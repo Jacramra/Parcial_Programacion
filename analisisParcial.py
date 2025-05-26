@@ -107,3 +107,9 @@ def obtener_reporte_individual(nombre):
     plt.title("Producción por tipo de pan")
     plt.ylabel("Cantidad")
     plt.show()
+
+    # 2. Complejidad
+    plt.bar(complejidades.keys(), complejidades.values(), color='orange')
+    plt.title("Complejidad aplicada")
+    plt.ylabel("Factor")
+    plt.show()
