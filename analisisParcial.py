@@ -94,3 +94,16 @@ def obtener_reporte_general():
 def obtener_reporte_individual(nombre):
     if nombre not in datos_operarios:
         raise ValueError("Operario no encontrado.")
+
+    datos = datos_operarios[nombre]
+    cantidades = datos["cantidades"]
+    complejidades = datos["complejidades"]
+    eficiencia = datos["eficiencia"]
+    estado = datos["estado"]
+
+    # Histogramas
+    # 1. Producción
+    plt.bar(cantidades.keys(), cantidades.values(), color='skyblue')
+    plt.title("Producción por tipo de pan")
+    plt.ylabel("Cantidad")
+    plt.show()
