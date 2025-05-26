@@ -89,6 +89,23 @@ def limpiar_campos():
     entry_pq.delete(0, tk.END)
     entry_cr.delete(0, tk.END)
 
+# Mostrar reporte general
+def mostrar_reporte_general():
+    try:
+        resumen, estadisticas, promedio = obtener_reporte_general()
+        ventana_reporte = tk.Toplevel(ventana)
+        ventana_reporte.title("Reporte General")
+
+        texto = tk.Text(ventana_reporte, width=80, height=20)
+        texto.pack()
+
+        texto.insert(tk.END, "REPORTE GENERAL\n\n")
+        texto.insert(tk.END, resumen.to_string(index=False))
+        texto.insert(tk.END, f"\n\nEstadísticas:\n{estadisticas}\n")
+        texto.insert(tk.END, f"\nPromedio de eficiencia: {promedio:.2f}")
+    except ValueError as e:
+        messagebox.showerror("Error", str(e))
+
  # Cerrar la ventana
 # Referencia: 
  # GeeksforGeeks. (2022). Destroy method in Tkinter Python. Disponible en: https://www.geeksforgeeks.org/destroy-method-in-tkinter-python/
@@ -110,7 +127,7 @@ boton_confirmar.grid(row=0, column=1, columnspan=2)
 boton_confirmar.grid_remove()  # Oculta el botón inicialmente
 
 # Botón para Reporte General
-boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=mostrar_campos)
+boton_reporteGeneral = tk.Button(ventana, text="Reporte General", command=mostrar_reporte_general)
 boton_reporteGeneral.grid(row=5, column=0)
 
 # Botón para Reporte Individual
