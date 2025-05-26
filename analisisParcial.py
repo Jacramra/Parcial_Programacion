@@ -80,5 +80,15 @@ def obtener_reporte_general():
     plt.ylabel("")
     plt.show()
 
+    # Matriz de correlación
+    correlacion = df[["Pan Francés", "Pan de Queso", "Croissants"]].corr()
+    plt.matshow(correlacion, cmap='coolwarm')
+    plt.colorbar()
+    plt.xticks(range(len(correlacion.columns)), correlacion.columns, rotation=45)
+    plt.yticks(range(len(correlacion.columns)), correlacion.columns)
+    plt.title("Correlación entre tipos de pan", y=1.2)
+    plt.show()
+
+    return df[["Operario", "Eficiencia", "Estado"]], estadisticas, promedio
     
 
