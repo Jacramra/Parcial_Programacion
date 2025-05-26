@@ -65,5 +65,8 @@ def registrar_produccion(nombre, pf, pq, cr):
 
     return registro
 
+def obtener_reporte_general():
+    if not produccion:
+        raise ValueError("No hay registros disponibles.")
     
 
