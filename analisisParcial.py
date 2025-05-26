@@ -113,3 +113,15 @@ def obtener_reporte_individual(nombre):
     plt.title("Complejidad aplicada")
     plt.ylabel("Factor")
     plt.show()
+
+    # 3. Eficiencia ponderada por tipo de pan
+    eficiencia_por_tipo = {
+        pan: cantidades[pan] * complejidades[pan]
+        for pan in cantidades
+    }
+    plt.bar(eficiencia_por_tipo.keys(), eficiencia_por_tipo.values(), color='green')
+    plt.title("Eficiencia ponderada por pan")
+    plt.ylabel("Puntos")
+    plt.show()
+
+    return eficiencia, estado
