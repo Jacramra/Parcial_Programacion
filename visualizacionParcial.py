@@ -106,6 +106,26 @@ def mostrar_reporte_general():
     except ValueError as e:
         messagebox.showerror("Error", str(e))
 
+# Mostrar reporte individual
+def mostrar_reporte_individual():
+    def confirmar_nombre():
+        nombre = entry_nombre.get()
+        try:
+            eficiencia, estado = obtener_reporte_individual(nombre)
+            messagebox.showinfo("Resultado", f"Eficiencia: {eficiencia}%\nEstado: {estado}")
+        except ValueError as e:
+            messagebox.showerror("Error", str(e))
+
+    ventana_individual = tk.Toplevel(ventana)
+    ventana_individual.title("Reporte Individual")
+
+    tk.Label(ventana_individual, text="Nombre del operario:").pack()
+    entry_nombre = tk.Entry(ventana_individual)
+    entry_nombre.pack()
+
+    boton = tk.Button(ventana_individual, text="Generar reporte", command=confirmar_nombre)
+    boton.pack()
+    
  # Cerrar la ventana
 # Referencia: 
  # GeeksforGeeks. (2022). Destroy method in Tkinter Python. Disponible en: https://www.geeksforgeeks.org/destroy-method-in-tkinter-python/
