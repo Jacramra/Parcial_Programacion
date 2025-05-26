@@ -11,7 +11,13 @@ def mostrar_campo_nombre():
     # Crear el label y entry solo cuando se pulse el botón
     label_nombre.grid(row=1, column=0)                  # Mostrar etiqueta "Nombre del operario"
     entry_nombreOperario.grid(row=1, column=1)          # Mostrar campo de texto para ingresar nombre
-    boton_confirmar.grid(row=2, column=0, columnspan=2) # Mostrar botón "Confirmar registro"
+
+    label_panFrances.grid(row=2, column=0)              # Mostrar etiqueta "Pan Francés"
+    entry_pf.grid(row=2, column=1)                      # Mostrar campo de texto para ingresar nombre
+
+    boton_confirmar.grid(row=5, column=0, columnspan=2) # Mostrar botón "Confirmar registro"
+
+
 
 # 1. Registro de producción diaria
 def registrar_produccion():
@@ -55,13 +61,24 @@ boton_reporteIndividual.grid(row=6, column=0)
 boton_Salir = tk.Button(ventana, text="Salir", command=cerrar_ventana) 
 boton_Salir.grid(row=7, column=0)
 
+#_________________________________________________________________________________________
+# _______________________________________CAMPOS_____________________________________________
+#_________________________________________________________________________________________
+
 #Campo: Nombre operario
-# Label y entry para nombre (inicialmente ocultos)
+# Label y entry para nombre Operario (inicialmente ocultos)
 label_nombre = tk.Label(ventana, text="Nombre del operario")
 #label_nombre.grid(row=0, column=0)
 
 entry_nombreOperario = tk.Entry(ventana)
 #entry_nombreOperario.grid(row=0, column=1)
+
+# Label y entry para nombre
+label_panFrances = tk.Label(ventana, text="Cant. pan francés")
+#label_panFrances.grid(row=1, column=0)
+
+entry_pf = tk.Entry(ventana)
+#entry_pf.grid(row=1, column=1)
 
 
 
